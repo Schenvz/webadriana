@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguros Adriana Rey — Tu tranquilidad, nuestra prioridad</title>
+    <meta name="description"
+        content="Seguros Adriana Rey. Coberturas de autos, hogar, vida, comercio y más. Cotizá gratis hoy.">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='50' fill='%231a3a5c'/><text y='.9em' font-size='60' x='20' font-family='serif' font-weight='bold' fill='%23c9a84c'>AR</text></svg>">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0d2137;
+            --navy2: #1a3a5c;
+            --gold: #c9a84c;
+            --gold-light: #e8c97a;
+            --gold-pale: #f5e9c8;
+            --cream: #faf7f2;
+            --white: #ffffff;
+            --text: #1a1a2e;
+            --muted: #6b7a8d;
+            --border: #e2d9c8;
+            --shadow: rgba(13, 33, 55, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--cream);
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5rem;
+            background: rgba(13, 33, 55, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+            transition: all .3s;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: 1px;
+            flex-shrink: 0;
+        }
+
+        .nav-brand-text {
+            line-height: 1.1;
+        }
+
+        .nav-brand-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: .5px;
+        }
+
+        .nav-brand-sub {
+            font-size: .65rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, .7);
+            text-decoration: none;
+            font-size: .85rem;
+            font-weight: 400;
+            transition: color .2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--navy);
+            padding: .55rem 1.4rem;
+            border-radius: 2rem;
+            font-size: .82rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all .2s;
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 60%, #1e4d7a 100%);
+            display: flex;
+            align-items: center;
+            padding: 8rem 5rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* decorative circles */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            right: -150px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201, 168, 76, .12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -200px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201, 168, 76, .07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* geometric pattern */
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            background-image: repeating-linear-gradient(45deg,
+                    rgba(201, 168, 76, .03) 0px,
+                    rgba(201, 168, 76, .03) 1px,
+                    transparent 1px,
+                    transparent 60px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            background: rgba(201, 168, 76, .12);
+            border: 1px solid rgba(201, 168, 76, .3);
+            border-radius: 2rem;
+            padding: .4rem 1rem;
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.8rem;
+            animation: fadeUp .6s .1s both;
+        }
+
+        .hero-shield {
+            font-size: .9rem;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            color: var(--white);
+            letter-spacing: -.5px;
+            margin-bottom: 1.5rem;
+            animation: fadeUp .6s .2s both;
+        }
+
+        .hero-title em {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, .7);
+            line-height: 1.8;
+            max-width: 520px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            animation: fadeUp .6s .3s both;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeUp .6s .4s both;
+        }
+
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: 1rem 2rem;
+            background: var(--gold);
+            color: var(--navy);
+            font-size: .88rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: .5rem;
+            transition: all .25s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201, 168, 76, .3);
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--white);
+            font-size: .88rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: .5rem;
+            border: 1px solid rgba(255, 255, 255, .25);
+            transition: all .25s;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .hero-right {
+            position: absolute;
+            right: 5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            animation: fadeUp .6s .5s both;
+        }
+
+        .hero-stat-card {
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(201, 168, 76, .2);
+            border-radius: 1rem;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            min-width: 160px;
+        }
+
+        .hero-stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: .72rem;
+            color: rgba(255, 255, 255, .6);
+            margin-top: .3rem;
+            letter-spacing: 1px;
+        }
+
+        /* ===== SERVICIOS ===== */
+        .section {
+            padding: 7rem 5rem;
+        }
+
+        .section-alt {
+            background: var(--white);
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: .68rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: .8rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -.5px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--navy2);
+        }
+
+        .section-sub {
+            font-size: .92rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 560px;
+            font-weight: 300;
+            margin-bottom: 3.5rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: 1.2rem;
+            padding: 2rem;
+            transition: all .3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .35s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px var(--shadow);
+            border-color: var(--gold);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--navy), var(--navy2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            transition: transform .3s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .service-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: .6rem;
+        }
+
+        .service-desc {
+            font-size: .83rem;
+            color: var(--muted);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: .3rem;
+            font-size: .78rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-top: 1rem;
+            text-decoration: none;
+            transition: gap .2s;
+        }
+
+        .service-card:hover .service-link {
+            gap: .6rem;
+        }
+
+        /* ===== POR QUÉ ELEGIRNOS ===== */
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .why-image {
+            position: relative;
+        }
+
+        .why-img-main {
+            background: linear-gradient(135deg, var(--navy), var(--navy2));
+            border-radius: 1.5rem;
+            aspect-ratio: 4/5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-img-main::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(13, 33, 55, .5), transparent);
+        }
+
+        .why-img-badge {
+            position: absolute;
+            bottom: -1.5rem;
+            right: -1.5rem;
+            background: var(--gold);
+            border-radius: 1rem;
+            padding: 1.2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(201, 168, 76, .3);
+        }
+
+        .why-img-badge-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+        }
+
+        .why-img-badge-label {
+            font-size: .65rem;
+            color: var(--navy2);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .why-points {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .why-point {
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+            padding: 1.2rem;
+            border-radius: 1rem;
+            transition: background .2s;
+        }
+
+        .why-point:hover {
+            background: var(--gold-pale);
+        }
+
+        .why-point-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .why-point-title {
+            font-weight: 600;
+            font-size: .92rem;
+            margin-bottom: .3rem;
+        }
+
+        .why-point-desc {
+            font-size: .82rem;
+            color: var(--muted);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* ===== CONTACTO ===== */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info-block {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem;
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            text-decoration: none;
+            color: var(--text);
+            transition: all .2s;
+        }
+
+        .contact-item:hover {
+            border-color: var(--gold);
+            transform: translateX(4px);
+            box-shadow: 0 4px 16px var(--shadow);
+        }
+
+        .contact-item-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, var(--navy), var(--navy2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .contact-item-label {
+            font-size: .7rem;
+            color: var(--muted);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .contact-item-value {
+            font-size: .9rem;
+            font-weight: 600;
+        }
+
+        /* FORM */
+        .contact-form {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 4px 30px var(--shadow);
+        }
+
+        .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: .5rem;
+        }
+
+        .form-sub {
+            font-size: .83rem;
+            color: var(--muted);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--navy2);
+            margin-bottom: .5rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: .85rem 1rem;
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: .6rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: .88rem;
+            color: var(--text);
+            transition: all .2s;
+            outline: none;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--gold);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, .1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--navy), var(--navy2));
+            color: var(--white);
+            font-family: 'Outfit', sans-serif;
+            font-size: .9rem;
+            font-weight: 600;
+            border: none;
+            border-radius: .6rem;
+            cursor: pointer;
+            transition: all .25s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+        }
+
+        .form-submit:hover {
+            background: var(--gold);
+            color: var(--navy);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201, 168, 76, .3);
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(201, 168, 76, .1);
+            border: 1px solid rgba(201, 168, 76, .3);
+            border-radius: 1rem;
+            margin-top: 1rem;
+        }
+
+        .form-success-icon {
+            font-size: 2.5rem;
+            margin-bottom: .8rem;
+        }
+
+        .form-success-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: .3rem;
+        }
+
+        .form-success-sub {
+            font-size: .85rem;
+            color: var(--muted);
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 500;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, .4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.6rem;
+            transition: all .3s;
+            animation: waBounce 2s 2s ease-in-out;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.12);
+            box-shadow: 0 8px 32px rgba(37, 211, 102, .5);
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--navy);
+            color: var(--white);
+            font-size: .75rem;
+            font-weight: 500;
+            white-space: nowrap;
+            padding: .4rem .9rem;
+            border-radius: .4rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .2s;
+        }
+
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--navy);
+            padding: 4rem 5rem 2rem;
+            color: rgba(255, 255, 255, .7);
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(201, 168, 76, .15);
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: .5rem;
+        }
+
+        .footer-brand-desc {
+            font-size: .83rem;
+            line-height: 1.7;
+            font-weight: 300;
+            max-width: 280px;
+        }
+
+        .footer-gold {
+            color: var(--gold);
+        }
+
+        .footer-col-title {
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, .6);
+            text-decoration: none;
+            font-size: .83rem;
+            transition: color .2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: .75rem;
+            color: rgba(255, 255, 255, .4);
+        }
+
+        .footer-dev {
+            color: rgba(255, 255, 255, .4);
+        }
+
+        .footer-dev a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes waBounce {
+
+            0%,
+            100% {
+                transform: scale(1)
+            }
+
+            50% {
+                transform: scale(1.1)
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:900px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 3rem;
+                flex-direction: column;
+            }
+
+            .hero-right {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin-top: 2rem;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .why-grid,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            footer {
+                padding: 3rem 1.5rem 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: .5rem;
+                text-align: center;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/5491100000000?text=Hola%20Adriana!%20Quiero%20consultar%20sobre%20un%20seguro."
+        class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        💬
+        <span class="whatsapp-tooltip">Escribinos por WhatsApp</span>
+    </a>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-brand">
+            <div class="nav-logo-icon">AR</div>
+            <div class="nav-brand-text">
+                <div class="nav-brand-name">Seguros Adriana Rey</div>
+                <div class="nav-brand-sub">Productora Asesora de Seguros</div>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a href="#contacto" class="nav-cta">Cotizá gratis →</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-pattern"></div>
+
+        <div class="hero-content">
+            <div class="hero-eyebrow">
+                <span class="hero-shield">🛡️</span>
+                Productora Asesora de Seguros · Buenos Aires
+            </div>
+
+            <h1 class="hero-title">
+                Tu tranquilidad<br>
+                es nuestra <em>prioridad.</em>
+            </h1>
+
+            <p class="hero-sub">
+                En Seguros Adriana Rey te asesoramos de forma personalizada para encontrar la cobertura ideal. Autos,
+                hogar, vida, comercio y mucho más — con la atención que merecés.
+            </p>
+
+            <div class="hero-ctas">
+                <a href="#contacto" class="btn-gold">🛡️ Cotizá tu seguro gratis</a>
+                <a href="#servicios" class="btn-ghost">Ver coberturas →</a>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="hero-stat-card">
+                <div class="hero-stat-num">+15</div>
+                <div class="hero-stat-label">Años de experiencia</div>
+            </div>
+            <div class="hero-stat-card">
+                <div class="hero-stat-num">24hs</div>
+                <div class="hero-stat-label">Atención personalizada</div>
+            </div>
+            <div class="hero-stat-card">
+                <div class="hero-stat-num">100%</div>
+                <div class="hero-stat-label">Asesoramiento gratuito</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="section" id="servicios">
+        <div class="section-tag reveal">Nuestras coberturas</div>
+        <h2 class="section-title reveal">Seguros para <em>cada necesidad</em></h2>
+        <p class="section-sub reveal">Trabajamos con las principales aseguradoras del país para ofrecerte la mejor
+            cobertura al mejor precio.</p>
+
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon">🚗</div>
+                <div class="service-name">Seguro de Auto</div>
+                <div class="service-desc">Cobertura total, terceros completos o responsabilidad civil. Protegé tu
+                    vehículo con la mejor relación precio-calidad.</div>
+                <a href="#contacto" class="service-link">Cotizá ahora →</a>
+            </div>
+
+            <div class="service-card reveal" style="transition-delay:.1s">
+                <div class="service-icon">🏠</div>
+                <div class="service-name">Seguro de Hogar</div>
+                <div class="service-desc">Protegé tu casa y todo lo que hay en ella. Incendio, robo, daños eléctricos,
+                    inundaciones y más.</div>
+                <a href="#contacto" class="service-link">Cotizá ahora →</a>
+            </div>
+
+            <div class="service-card reveal" style="transition-delay:.2s">
+                <div class="service-icon">💼</div>
+                <div class="service-name">Seguro de Vida</div>
+                <div class="service-desc">Asegurá el futuro de los que más querés. Cobertura por fallecimiento,
+                    invalidez total y permanente.</div>
+                <a href="#contacto" class="service-link">Cotizá ahora →</a>
+            </div>
+
+            <div class="service-card reveal" style="transition-delay:.3s">
+                <div class="service-icon">🏪</div>
+                <div class="service-name">Seguro de Comercio</div>
+                <div class="service-desc">Protegé tu negocio. Cobertura integral para locales, oficinas, depósitos y
+                    todo tipo de establecimientos comerciales.</div>
+                <a href="#contacto" class="service-link">Cotizá ahora →</a>
+            </div>
+
+            <div class="service-card reveal" style="transition-delay:.4s">
+                <div class="service-icon">🏗️</div>
+                <div class="service-name">Seguro Integral</div>
+                <div class="service-desc">Coberturas combinadas para particulares y empresas. Diseñadas a medida según
+                    tus necesidades específicas.</div>
+                <a href="#contacto" class="service-link">Cotizá ahora →</a>
+            </div>
+
+            <div class="service-card reveal" style="transition-delay:.5s">
+                <div class="service-icon">🌟</div>
+                <div class="service-name">Otros Seguros</div>
+                <div class="service-desc">Mala praxis, accidentes personales, caución, transporte y más. Consultanos por
+                    cualquier tipo de cobertura.</div>
+                <a href="#contacto" class="service-link">Consultá →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- POR QUÉ ELEGIRNOS -->
+    <section class="section section-alt" id="nosotros">
+        <div class="why-grid">
+            <div class="why-image reveal-left">
+                <div class="why-img-main">🛡️</div>
+                <div class="why-img-badge">
+                    <div class="why-img-badge-num">+15</div>
+                    <div class="why-img-badge-label">Años en el rubro</div>
+                </div>
+            </div>
+
+            <div class="reveal-right">
+                <div class="section-tag">¿Por qué elegirnos?</div>
+                <h2 class="section-title">Experiencia y <em>confianza</em></h2>
+                <p class="section-sub">Adriana Rey es productora asesora de seguros matriculada, con más de 15 años
+                    acompañando a personas y empresas a proteger lo que más importa.</p>
+
+                <div class="why-points">
+                    <div class="why-point">
+                        <div class="why-point-icon">🎯</div>
+                        <div>
+                            <div class="why-point-title">Asesoramiento personalizado</div>
+                            <div class="why-point-desc">Analizamos tu situación y te recomendamos la cobertura que
+                                realmente necesitás, sin venderte lo que no te sirve.</div>
+                        </div>
+                    </div>
+                    <div class="why-point">
+                        <div class="why-point-icon">⚡</div>
+                        <div>
+                            <div class="why-point-title">Respuesta rápida</div>
+                            <div class="why-point-desc">Ante cualquier siniestro, te acompañamos en todo el proceso para
+                                que tu reclamo sea resuelto de forma ágil.</div>
+                        </div>
+                    </div>
+                    <div class="why-point">
+                        <div class="why-point-icon">🤝</div>
+                        <div>
+                            <div class="why-point-title">Relación a largo plazo</div>
+                            <div class="why-point-desc">No somos un call center. Somos una asesora de confianza que te
+                                conoce y te cuida año a año.</div>
+                        </div>
+                    </div>
+                    <div class="why-point">
+                        <div class="why-point-icon">💰</div>
+                        <div>
+                            <div class="why-point-title">Mejor precio del mercado</div>
+                            <div class="why-point-desc">Comparamos entre las principales aseguradoras para que siempre
+                                pagues lo justo por la mejor cobertura.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contacto">
+        <div class="section-tag reveal">Contacto</div>
+        <h2 class="section-title reveal">Pedí tu <em>cotización gratis</em></h2>
+        <p class="section-sub reveal">Completá el formulario o elegí el medio que prefieras. Te respondemos en menos de
+            24 horas.</p>
+
+        <div class="contact-wrapper">
+            <div class="reveal-left">
+                <div class="contact-info-block">
+                    <a href="https://wa.me/5491100000000?text=Hola%20Adriana!%20Quiero%20consultar%20sobre%20un%20seguro."
+                        target="_blank" class="contact-item">
+                        <div class="contact-item-icon">💬</div>
+                        <div>
+                            <div class="contact-item-label">WhatsApp</div>
+                            <div class="contact-item-value">+54 9 11 0000-0000</div>
+                        </div>
+                    </a>
+
+                    <a href="mailto:adriana@segurosadrianarey.com.ar" class="contact-item">
+                        <div class="contact-item-icon">📧</div>
+                        <div>
+                            <div class="contact-item-label">Email</div>
+                            <div class="contact-item-value">adriana@segurosadrianarey.com.ar</div>
+                        </div>
+                    </a>
+
+                    <a href="tel:+541100000000" class="contact-item">
+                        <div class="contact-item-icon">📞</div>
+                        <div>
+                            <div class="contact-item-label">Teléfono</div>
+                            <div class="contact-item-value">+54 11 0000-0000</div>
+                        </div>
+                    </a>
+
+                    <div class="contact-item" style="cursor:default;">
+                        <div class="contact-item-icon">📍</div>
+                        <div>
+                            <div class="contact-item-label">Ubicación</div>
+                            <div class="contact-item-value">Buenos Aires, Argentina</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="margin-top:2rem; padding:1.5rem; background:linear-gradient(135deg, var(--navy), var(--navy2)); border-radius:1rem; color:white;">
+                    <div
+                        style="font-size:.72rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; font-weight:600;">
+                        Horario de atención</div>
+                    <div
+                        style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:600; margin-bottom:.3rem;">
+                        Lunes a Viernes · 9 a 18hs</div>
+                    <div style="font-size:.82rem; color:rgba(255,255,255,.6); font-weight:300;">Consultas urgentes por
+                        WhatsApp las 24hs</div>
+                </div>
+            </div>
+
+            <div class="contact-form reveal-right">
+                <div class="form-title">Cotizá tu seguro</div>
+                <div class="form-sub">Sin compromiso · Respuesta en menos de 24hs</div>
+
+                <div id="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Nombre *</label>
+                            <input type="text" class="form-input" placeholder="Tu nombre" id="f-nombre">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Apellido *</label>
+                            <input type="text" class="form-input" placeholder="Tu apellido" id="f-apellido">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email *</label>
+                        <input type="email" class="form-input" placeholder="tu@email.com" id="f-email">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Teléfono</label>
+                        <input type="tel" class="form-input" placeholder="+54 9 11 ..." id="f-tel">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Tipo de seguro *</label>
+                        <select class="form-select" id="f-tipo">
+                            <option value="">Seleccioná una opción</option>
+                            <option>Seguro de Auto</option>
+                            <option>Seguro de Hogar</option>
+                            <option>Seguro de Vida</option>
+                            <option>Seguro de Comercio</option>
+                            <option>Seguro Integral</option>
+                            <option>Otro / No sé cuál necesito</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Mensaje</label>
+                        <textarea class="form-textarea" placeholder="Contanos más sobre lo que necesitás..."
+                            id="f-msg"></textarea>
+                    </div>
+
+                    <button class="form-submit" onclick="submitForm()">
+                        🛡️ Enviar consulta
+                    </button>
+                </div>
+
+                <div class="form-success" id="form-success">
+                    <div class="form-success-icon">✅</div>
+                    <div class="form-success-title">¡Consulta enviada!</div>
+                    <div class="form-success-sub">Adriana te contactará en menos de 24 horas. Podés también escribirle
+                        por WhatsApp para una respuesta más rápida.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand-name">Seguros Adriana Rey</div>
+                <div class="footer-brand-desc">Productora Asesora de Seguros matriculada. Más de 15 años protegiendo lo
+                    que más importa a personas y empresas en Argentina.</div>
+            </div>
+            <div>
+                <div class="footer-col-title">Servicios</div>
+                <ul class="footer-links">
+                    <li><a href="#servicios">Seguro de Auto</a></li>
+                    <li><a href="#servicios">Seguro de Hogar</a></li>
+                    <li><a href="#servicios">Seguro de Vida</a></li>
+                    <li><a href="#servicios">Seguro de Comercio</a></li>
+                    <li><a href="#servicios">Seguros Integrales</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-col-title">Contacto</div>
+                <ul class="footer-links">
+                    <li><a href="https://wa.me/5491100000000">WhatsApp</a></li>
+                    <li><a href="mailto:adriana@segurosadrianarey.com.ar">Email</a></li>
+                    <li><a href="tel:+541100000000">Teléfono</a></li>
+                    <li><a href="#contacto">Cotizá gratis</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>© 2026 Seguros Adriana Rey · Todos los derechos reservados</div>
+            <div class="footer-dev">Desarrollado por <a href="https://lucasgorini-portafolio.vercel.app"
+                    target="_blank">Lucas Gorini</a></div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== REVEAL ON SCROLL =====
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => observer.observe(el));
+
+        // ===== FORM SUBMIT =====
+        function submitForm() {
+            const nombre = document.getElementById('f-nombre').value.trim();
+            const email = document.getElementById('f-email').value.trim();
+            const tipo = document.getElementById('f-tipo').value;
+
+            if (!nombre || !email || !tipo) {
+                alert('Por favor completá los campos obligatorios (*)');
+                return;
+            }
+
+            document.getElementById('contact-form').style.display = 'none';
+            document.getElementById('form-success').style.display = 'block';
+        }
+
+        // ===== NAV SCROLL =====
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            nav.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.3)' : 'none';
+        });
+    </script>
+</body>
+
+</html>
