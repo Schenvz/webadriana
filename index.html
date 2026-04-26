@@ -1590,6 +1590,38 @@
                 window.scrollY > 40 ? '0 4px 24px rgba(27,67,50,.1)' : 'none';
         });
 
+        // WA FLOAT - avoid footer overlap
+        const waBtn = document.querySelector('.wa-float');
+        window.addEventListener('scroll', () => {
+            const footer = document.querySelector('footer');
+            const footerTop = footer.getBoundingClientRect().top;
+            const windowH = window.innerHeight;
+            const btnH = waBtn.offsetHeight + 32; // 2rem bottom padding
+
+            if (footerTop < windowH) {
+                // footer is visible — push button up
+                const overlap = windowH - footerTop + 16;
+                waBtn.style.bottom = overlap + 'px';
+            } else {
+                waBtn.style.bottom = '2rem';
+            }
+        });
+
+        // FORM
+        function enviar() {
+            const n = document.getElementById('fn').value.trim();
+            const e = document.getElementById('fem').value.trim();
+            const t = document.getElementById('ftipo').value;
+            if (!n || !e || !t) { alert('Completá los campos obligatorios (*)'); return; }
+            document.getElementById('the-form').style.display = 'none';
+            document.getElementById('fsuccess').style.display = 'block';
+        }
+        // NAV SHADOW
+        window.addEventListener('scroll', () => {
+            document.getElementById('main-nav').style.boxShadow =
+                window.scrollY > 40 ? '0 4px 24px rgba(27,67,50,.1)' : 'none';
+        });
+
         // FORM
         function enviar() {
             const n = document.getElementById('fn').value.trim();
